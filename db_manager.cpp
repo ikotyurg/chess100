@@ -82,6 +82,11 @@ void DBManager::clear(){
     moves.clear();
 }
 
+void DBManager::replace()
+{
+    moves.removeLast();
+}
+
 void DBManager::loadGame(QString name)
 {
     if (!db.open()) return;

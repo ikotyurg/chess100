@@ -25,6 +25,7 @@ signals:
 public slots:
     void getLastMove(const std::pair<QString, Move>& move);
     void clear();
+    void replace();
     void store(QString name);
 
 

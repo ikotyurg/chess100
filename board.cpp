@@ -144,7 +144,7 @@ void Board::initBoard(){
             emit moved((int*const*const)board, int(status), turn);
 }
 
-void Board::rtRoard()
+void Board::rtRoard(Men **board)
 {
      rotateBoard(board);
 }

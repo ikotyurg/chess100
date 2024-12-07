@@ -56,6 +56,6 @@ void GameWindow::on_exit_clicked()
 
 void GameWindow::on_rotateButton_clicked()
 {
-    emit rotateBoard();
+    //emit rotateBoard(Board.board);
 }
 

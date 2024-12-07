@@ -65,3 +65,4 @@ void ReplayGameWindow::on_listView_clicked(const QModelIndex &index)
 }
 
 
+

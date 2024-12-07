@@ -32,7 +32,7 @@ Logic::Logic(QObject *parent) : QObject(parent){
             mw.rlgw.rgw.board, SLOT(setBoard(int*const*const, int, bool)));
     connect(&mw.rlgw.rgw, SIGNAL(selectedMove(int)), &br, SLOT(move(int)));
 
-    connect(&mw.gw, SIGNAL(rotateBoard()), &bg, SLOT(rtRoard()));
+    connect(&mw.gw, SIGNAL(rotateBoard(Men **)), &bg, SLOT(rtBoard(Men **)));
 
     bg.initBoard();
 }
