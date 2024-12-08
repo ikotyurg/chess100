@@ -1,7 +1,4 @@
 #include "board.h"
-#include "board_widget.h""
-
-BoardReplay *br;
 
 Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
    fullBoard = new Men*[N + 4];
@@ -147,14 +144,10 @@ void Board::initBoard(){
             emit moved((int*const*const)board, int(status), turn);
 }
 
-void Board::rtRoard(Men **board)
+void Board::rotated()
 {
     rotateBoard(board);
-    if (widget) {
-            widget->setBoard(reinterpret_cast<int* const*>(board), status, turn);
-           }
 }
-
 
 
 void Board::rotateBoard(Men * const * const board)
@@ -173,6 +166,7 @@ void Board::rotateBoard(Men * const * const board)
                 board[i][j] = rotated[i][j];
             }
         }
+        emit rotatedBoard((int*const*const)board, int(status), turn);
 }
 
 bool Board::canManMove(const QPoint &from, const QPoint &to){

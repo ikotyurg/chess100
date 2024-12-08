@@ -8,7 +8,6 @@
 #include "gamewindow.h"
 #include "men.h"
 #include "status.h"
-#include "board_replay.h"
 
 class Board : public QObject
 {
@@ -34,11 +33,12 @@ signals:
     void promotion(bool);
     void message(QString msg);
     void sendLastMove(const std::pair<QString, Move>& move);
+    void rotatedBoard(int *const *const board, int status, bool turn);
 public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
     void initBoard();
-    void rtRoard(Men **board);
+    void rotated();
 private:
     struct MoveStruct{Men moved; Men beated; QPoint from; QPoint to; QPoint beatedPoint;};
     struct Point{QPoint point; Men man;};
@@ -79,7 +79,6 @@ private:
     int nChecks(bool isWhite);
     void checkStatus();
     void rotateBoard(Men *const *const board);
-    BoardWidget* widget;
 
     std::pair<QString, Move> movedMen;
 private:
