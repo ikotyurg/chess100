@@ -8,6 +8,7 @@
 #include "gamewindow.h"
 #include "men.h"
 #include "status.h"
+#include "board_replay.h"
 
 class Board : public QObject
 {
@@ -78,6 +79,7 @@ private:
     int nChecks(bool isWhite);
     void checkStatus();
     void rotateBoard(Men *const *const board);
+    BoardWidget* widget;
 
     std::pair<QString, Move> movedMen;
 private:
