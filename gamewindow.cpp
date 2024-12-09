@@ -2,6 +2,7 @@
 #include "board.h"
 #include "ui_gamewindow.h"
 #include "status.h"
+#include <QPushButton>
 
 GameWindow::GameWindow(QWidget *parent) :
     QDialog(parent),
@@ -22,6 +23,8 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(&saveGameDialog, SIGNAL(save(QString)),  this, SIGNAL(saveGame(QString)));
     connect(ui->savegame, SIGNAL(clicked(bool)), &saveGameDialog, SLOT(exec()));
     //connect(this, SIGNAL(rotateBoard()), &board, SLOT(rotBrd()));
+    QPushButton *rotateButton = new QPushButton("Перевернуть доску", this);
+    connect(rotateButton, &QPushButton::clicked, this, &GameWindow::on_rotateButton);
  }
 
 GameWindow::~GameWindow()
@@ -54,8 +57,14 @@ void GameWindow::on_exit_clicked()
 
 
 
-void GameWindow::on_rotateButton_clicked()
+void GameWindow::on_rotateButton()
 {
-    //emit rotateBoard(Board.board);
+    currentBoard = myBoard->board;
+    if (board != nullptr && currentBoard != nullptr) {
+        myBoard->rotateBoard(currentBoard);
+        } else {
+            // Обработка случая, если currentBoard не инициализирован
+            qDebug() << "board not initialized!";
+        }
 }
 

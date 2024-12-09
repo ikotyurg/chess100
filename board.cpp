@@ -166,7 +166,6 @@ void Board::rotateBoard(Men * const * const board)
                 board[i][j] = rotated[i][j];
             }
         }
-        emit rotatedBoard((int*const*const)board, int(status), turn);
 }
 
 bool Board::canManMove(const QPoint &from, const QPoint &to){

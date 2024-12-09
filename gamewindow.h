@@ -6,6 +6,7 @@
 #include "promotiondialog.h"
 #include "savegamedialog.h"
 #include "board.h"
+#include "men.h"
 
 namespace Ui {
 class GameWindow;
@@ -25,7 +26,6 @@ signals:
     void promotion(int);
     void newGame();
     void saveGame(QString);
-    void rotateBoard();
 
 private slots:
     void setStatus(int status);
@@ -33,12 +33,14 @@ private slots:
 
     void on_exit_clicked();
 
-    void on_rotateButton_clicked();
+    void on_rotateButton(); // Обработчик нажатия кнопки
 
+private:
+    Board* myBoard; // Указатель на объект Board
+    Men** currentBoard; // Указатель на массив фигур
 private:
     PromotionDialog promDialog;
     SaveGameDialog saveGameDialog;
-private:
     Ui::GameWindow *ui;
 };
 

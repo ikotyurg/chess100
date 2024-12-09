@@ -5,7 +5,6 @@
 #include <QPoint>
 #include <QVector>
 #include <tuple>
-#include "gamewindow.h"
 #include "men.h"
 #include "status.h"
 
@@ -22,18 +21,17 @@ public:
         int32_t cell_add2;
         int32_t status;
     };
-
+    void rotateBoard(Men *const *const board);
+    Men **board; // just a part of fullBoard 10*10
 private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12
-    Men **board; // just a part of fullBoard 10*10
 
 signals:
     void moved(int *const *const board, int status, bool turn);
     void promotion(bool);
     void message(QString msg);
     void sendLastMove(const std::pair<QString, Move>& move);
-    void rotatedBoard(int *const *const board, int status, bool turn);
 public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
@@ -78,7 +76,6 @@ private:
     bool hasCheck(bool isWhite);
     int nChecks(bool isWhite);
     void checkStatus();
-    void rotateBoard(Men *const *const board);
 
     std::pair<QString, Move> movedMen;
 private:

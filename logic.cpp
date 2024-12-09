@@ -32,8 +32,5 @@ Logic::Logic(QObject *parent) : QObject(parent){
             mw.rlgw.rgw.board, SLOT(setBoard(int*const*const, int, bool)));
     connect(&mw.rlgw.rgw, SIGNAL(selectedMove(int)), &br, SLOT(move(int)));
 
-    connect(&mw.gw, SIGNAL(rotateBoard()), &bg, SLOT(rotated()));
-    connect(&mw.gw, SIGNAL(rotated(int*const*const, int, bool)), mw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
-
     bg.initBoard();
 }
