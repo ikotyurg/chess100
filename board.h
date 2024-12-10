@@ -36,7 +36,6 @@ public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
     void initBoard();
-    void rotated();
 private:
     struct MoveStruct{Men moved; Men beated; QPoint from; QPoint to; QPoint beatedPoint;};
     struct Point{QPoint point; Men man;};

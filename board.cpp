@@ -144,28 +144,23 @@ void Board::initBoard(){
             emit moved((int*const*const)board, int(status), turn);
 }
 
-void Board::rotated()
-{
-    rotateBoard(board);
-}
-
-
 void Board::rotateBoard(Men * const * const board)
 {
     Men rotated[10][10];
 
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 10; ++j) {
-                rotated[i][j] = board[10 - 1 - i][10 - 1 - j];
-            }
+    // Поворачиваем доску на 180 градусов
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            rotated[i][j] = board[9 - i][9 - j];
         }
+    }
 
-        // Копируем повернутую доску обратно в оригинальный массив
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 10; ++j) {
-                board[i][j] = rotated[i][j];
-            }
+    // Копируем повернутую доску обратно в оригинальный массив
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            board[i][j] = rotated[i][j];
         }
+    }
 }
 
 bool Board::canManMove(const QPoint &from, const QPoint &to){
