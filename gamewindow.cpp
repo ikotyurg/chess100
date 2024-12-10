@@ -1,3 +1,4 @@
+
 #include "gamewindow.h"
 #include "board.h"
 #include "ui_gamewindow.h"
@@ -59,12 +60,6 @@ void GameWindow::on_exit_clicked()
 
 void GameWindow::on_rotateButton()
 {
-    currentBoard = myBoard->board;
-    if (board != nullptr && currentBoard != nullptr) {
-        myBoard->rotateBoard(currentBoard);
-        } else {
-            // Обработка случая, если currentBoard не инициализирован
-            qDebug() << "board not initialized!";
-        }
+    myBoard->rotateBoard();
 }
 

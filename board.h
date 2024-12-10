@@ -21,7 +21,7 @@ public:
         int32_t cell_add2;
         int32_t status;
     };
-    void rotateBoard(Men *const *const board);
+    void rotateBoard();
     Men **board; // just a part of fullBoard 10*10
 private:
     bool turn;
