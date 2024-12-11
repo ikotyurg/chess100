@@ -1,4 +1,5 @@
 #include "board.h"
+#include <iostream>
 
 Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
    fullBoard = new Men*[N + 4];
@@ -19,6 +20,22 @@ Board::~Board()
         delete []fullBoard[i];
     }
     delete []fullBoard;
+}
+
+Men **Board::rotateBoard(Men **board)
+{
+        Men** rotated = new Men*[10];
+        for (int i = 0; i < 10; ++i) {
+            rotated[i] = new Men[10];
+        }
+
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                rotated[i][j] = board[9 - i][9 - j];
+            }
+        }
+
+        return rotated;
 }
 
 
@@ -144,23 +161,11 @@ void Board::initBoard(){
             emit moved((int*const*const)board, int(status), turn);
 }
 
-void Board::rotateBoard()
-{
-    Men rotated[10][10];
-
-    // Поворачиваем доску на 180 градусов
+void deleteBoard(Men** board) {
     for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            rotated[i][j] = board[9 - i][9 - j];
-        }
+        delete[] board[i];
     }
-
-    // Копируем повернутую доску обратно в оригинальный массив
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            board[i][j] = rotated[i][j];
-        }
-    }
+    delete[] board;
 }
 
 bool Board::canManMove(const QPoint &from, const QPoint &to){

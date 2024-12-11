@@ -1,4 +1,3 @@
-
 #include "gamewindow.h"
 #include "board.h"
 #include "ui_gamewindow.h"
@@ -60,6 +59,25 @@ void GameWindow::on_exit_clicked()
 
 void GameWindow::on_rotateButton()
 {
-    myBoard->rotateBoard();
+    currentBoard = myBoard->board;
+    if (!myBoard) {
+        // Обработка ошибки
+        qDebug() <<  "myBoard is not initialized!";
+        return;
+    }
+        Men** rotatedBoard = myBoard->rotateBoard(currentBoard);
+
+        myBoard->board = rotatedBoard;
+
+        // Освобождение памяти
+        deleteBoard(rotatedBoard);
+}
+
+void GameWindow::deleteBoard(Men **board)
+{
+    for (int i = 0; i < 10; ++i) {
+            delete[] board[i]; // освобождаем каждую строку
+        }
+        delete[] board; // освобождаем массив указателей
 }
 

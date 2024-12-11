@@ -23,6 +23,7 @@ public:
     };
     void rotateBoard();
     Men **board; // just a part of fullBoard 10*10
+    Men** rotateBoard(Men** board);
 private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12

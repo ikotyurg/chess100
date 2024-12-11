@@ -42,6 +42,7 @@ private:
     PromotionDialog promDialog;
     SaveGameDialog saveGameDialog;
     Ui::GameWindow *ui;
+    void deleteBoard(Men** board);
 };
 
 #endif // GAMEWINDOW_H
