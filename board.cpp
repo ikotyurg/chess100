@@ -23,11 +23,7 @@ Board::~Board()
 }
 
 void Board::rotateBoard() {
-    if (!board || !rotated) {
-        std::cerr << "Board or rotated not initialized!" << std::endl;
-        return;
-    }
-
+   
     // Поворот
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
