@@ -59,18 +59,7 @@ void GameWindow::on_exit_clicked()
 
 void GameWindow::on_rotateButton()
 {
-    currentBoard = myBoard->board;
-    if (!myBoard) {
-        // Обработка ошибки
-        qDebug() <<  "myBoard is not initialized!";
-        return;
-    }
-        Men** rotatedBoard = myBoard->rotateBoard(currentBoard);
-
-        myBoard->board = rotatedBoard;
-
-        // Освобождение памяти
-        deleteBoard(rotatedBoard);
+        myBoard->rotateBoard();
 }
 
 void GameWindow::deleteBoard(Men **board)

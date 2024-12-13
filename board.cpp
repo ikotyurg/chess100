@@ -22,20 +22,21 @@ Board::~Board()
     delete []fullBoard;
 }
 
-Men **Board::rotateBoard(Men **board)
+void Board::rotateBoard()
 {
-        Men** rotated = new Men*[10];
-        for (int i = 0; i < 10; ++i) {
-            rotated[i] = new Men[10];
+    // Поворачиваем доску на 180 градусов
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            rotated[i][j] = board[9 - i][9 - j];
         }
+    }
 
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 10; ++j) {
-                rotated[i][j] = board[9 - i][9 - j];
-            }
+    // Копируем повернутую доску обратно в оригинальный массив
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            board[i][j] = rotated[i][j];
         }
-
-        return rotated;
+    }
 }
 
 
