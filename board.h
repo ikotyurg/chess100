@@ -26,7 +26,7 @@ public:
 private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12
-    Men** rotated;
+    Men **rotated;
 
 signals:
     void moved(int *const *const board, int status, bool turn);
