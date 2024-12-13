@@ -22,24 +22,26 @@ Board::~Board()
     delete []fullBoard;
 }
 
-void Board::rotateBoard()
-{
-    // Поворачиваем доску на 180 градусов
+void Board::rotateBoard() {
+    if (!board || !rotated) {
+        std::cerr << "Board or rotated not initialized!" << std::endl;
+        return;
+    }
+
+    // Поворот
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
             rotated[i][j] = board[9 - i][9 - j];
         }
     }
 
-    // Копируем повернутую доску обратно в оригинальный массив
+    // Копирование обратно
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
             board[i][j] = rotated[i][j];
         }
     }
 }
-
-
 
 void Board::move(const QPoint& from, const QPoint &to){
     if (board[from.x()][from.y()] == Men::None)
