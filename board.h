@@ -22,11 +22,12 @@ public:
         int32_t status;
     };
     void rotateBoard();
-    Men **board; // just a part of fullBoard 10*10
+
 private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12
-    Men **rotated;
+    Men **board;  // Основная доска
+    Men **rotated;  // Временная доска для поворота
 
 signals:
     void moved(int *const *const board, int status, bool turn);

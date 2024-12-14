@@ -1,4 +1,5 @@
 #include "board.h"
+#include "qdebug.h"
 #include <iostream>
 
 Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
@@ -7,8 +8,10 @@ Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
        fullBoard[i] = new Men[N + 4];
    }
    board = new Men*[N + 4];
+   rotated = new Men*[N + 4];
    for (int i = 0; i < N + 4; ++i) {
        board[i] = &fullBoard[i][2];
+       rotated[i] = &fullBoard[i][2];
    }
    ++(++board);
    initBoard();
@@ -18,12 +21,16 @@ Board::~Board()
 {
     for (int i = 0; i < N + 4; ++i){
         delete []fullBoard[i];
+        delete []rotated[i];
     }
     delete []fullBoard;
+    delete []rotated;
 }
 
 void Board::rotateBoard() {
-   
+    // Проверка, что указатели не являются нулевыми
+    if (!board || !rotated) return;
+
     // Поворот
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
