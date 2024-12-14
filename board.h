@@ -27,8 +27,10 @@ private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12
     Men **board;  // Основная доска
+    int **boardRepl;
     Men **rotated;  // Временная доска для поворота
-
+    QVector<Move> moves;
+    int nMove;
 signals:
     void moved(int *const *const board, int status, bool turn);
     void promotion(bool);
@@ -38,6 +40,8 @@ public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
     void initBoard();
+    void initReplBoard(QVector<Move> moves);
+    void moveReplay(int nMove);
 private:
     struct MoveStruct{Men moved; Men beated; QPoint from; QPoint to; QPoint beatedPoint;};
     struct Point{QPoint point; Men man;};
