@@ -143,11 +143,11 @@ void Board::promotion(int man)
 }
 
 void Board::initBoard(){
-    turn = true;
+    turnRepl = true;
     prom = false;
     lastMove = {Men::None, Men::None, {-1,-1}, {-1,-1}, {-1,-1}};
     checkingMen = {-1,-1};
-    status = Status::Play;
+    statusRepl = Status::Play;
     WKMoved = false; BKMoved = false;
     for (int i = 0; i < N; ++i){
         board[i][2] = board[i][3] = board[i][4] = board[i][5] = board[i][6] = board[i][7] = Men::None;
@@ -164,7 +164,7 @@ void Board::initBoard(){
             board[4][9] = Men::WQueen;
             board[5][0] = Men::BKing; BlackKing = {6, 0};
             board[5][9] = Men::WKing; WhiteKing = {6, 9};
-            emit moved((int*const*const)board, int(status), turn);
+            emit moved((int*const*const)board, int(statusRepl), turnRepl);
 }
 
 void Board::initReplBoard(QVector<Move> moves)

@@ -2,10 +2,10 @@
 #define GAMEWINDOW_H
 
 #include <QDialog>
-#include "board_widget.h"
+#include "board.h"
 #include "promotiondialog.h"
 #include "savegamedialog.h"
-#include "board.h"
+#include "board_widget.h"
 #include "men.h"
 
 namespace Ui {
@@ -26,6 +26,7 @@ signals:
     void promotion(int);
     void newGame();
     void saveGame(QString);
+    void selectedMove(int);
 
 private slots:
     void setStatus(int status);
@@ -35,6 +36,10 @@ private slots:
 
     void on_rotateButton(); // Обработчик нажатия кнопки
 
+    void on_listView_clicked(const QModelIndex &index);
+
+    void getMoves(QStringList);
+
 private:
     Board* myBoard; // Указатель на объект Board
     Men** currentBoard; // Указатель на массив фигур
@@ -42,7 +47,6 @@ private:
     PromotionDialog promDialog;
     SaveGameDialog saveGameDialog;
     Ui::GameWindow *ui;
-    void deleteBoard(Men** board);
 };
 
 #endif // GAMEWINDOW_H

@@ -25,6 +25,7 @@ public:
 
 private:
     bool turn;
+    bool turnRepl;
     Men **fullBoard; // to check checks he-he 12*12
     Men **board;  // Основная доска
     int **boardRepl;
@@ -78,6 +79,7 @@ private:
     MoveStruct lastMove{Men::None, Men::None, {-1,-1}, {-1,-1}, {-1,-1}};
     QPoint checkingMen{-1,-1};
     Status status;
+    Status statusRepl;
     bool hasCheck(bool isWhite);
     int nChecks(bool isWhite);
     void checkStatus();

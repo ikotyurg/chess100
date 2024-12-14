@@ -32,12 +32,9 @@ SOURCES += \
     savegamedialog.cpp \
     mainwindow.cpp \
     gamewindow.cpp \
-    board_replay.cpp \
-    board_replay_widget.cpp \
     board_widget.cpp \
     db_manager.cpp \
-    replay_list_games_window.cpp \
-    replay_game_window.cpp
+    replay_list_games_window.cpp
 
 HEADERS += \
     board.h \
@@ -48,20 +45,16 @@ HEADERS += \
     savegamedialog.h \
     mainwindow.h \
     gamewindow.h \
-    board_replay.h \
-    board_replay_widget.h \
     board_widget.h \
     db_manager.h \
-    replay_list_games_window.h \
-    replay_game_window.h
+    replay_list_games_window.h
 
 FORMS += \
     promotiondialog.ui \
     savegamedialog.ui \
     mainwindow.ui \
     gamewindow.ui \
-    replay_list_games_window.ui \
-    replay_game_window.ui
+    replay_list_games_window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

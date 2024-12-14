@@ -4,7 +4,7 @@
 #include <QObject>
 #include "mainwindow.h"
 #include "board.h"
-#include "board_replay.h"
+
 #include "db_manager.h"
 
 class Logic : public QObject
@@ -12,7 +12,6 @@ class Logic : public QObject
     Q_OBJECT
 
     Board bg;
-    BoardReplay br;
     MainWindow mw;
     DBManager db;
 public:

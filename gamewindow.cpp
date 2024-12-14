@@ -2,6 +2,8 @@
 #include "board.h"
 #include "ui_gamewindow.h"
 #include "status.h"
+#include "qdebug.h"
+#include <QStringListModel>
 #include <QPushButton>
 
 GameWindow::GameWindow(QWidget *parent) :
@@ -45,10 +47,15 @@ void GameWindow::setStatus(int status){
     }
 }
 
-void GameWindow::setTurn(bool turn){
-    if (turn) ui->turn->setText(QString("White"));
-    else      ui->turn->setText(QString("Black"));
+void GameWindow::setTurn(bool turn)
+{
+    {
+        if (turn) ui->turn->setText(QString("White"));
+        else      ui->turn->setText(QString("Black"));
+    }
 }
+
+
 
 void GameWindow::on_exit_clicked()
 {
@@ -62,11 +69,17 @@ void GameWindow::on_rotateButton()
         myBoard->rotateBoard();
 }
 
-void GameWindow::deleteBoard(Men **board)
+
+void GameWindow::on_listView_clicked(const QModelIndex &index)
 {
-    for (int i = 0; i < 10; ++i) {
-            delete[] board[i]; // освобождаем каждую строку
-        }
-        delete[] board; // освобождаем массив указателей
+    qDebug() << "INDEX: " << index.row();
+    emit selectedMove(index.row());
+}
+
+void GameWindow::getMoves(QStringList moves)
+{
+    QStringListModel *model = new QStringListModel();
+    model->setStringList(moves);
+    ui->listView->setModel(model);
 }
 
