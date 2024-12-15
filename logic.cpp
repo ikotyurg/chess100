@@ -4,7 +4,7 @@
 Logic::Logic(QObject *parent) : QObject(parent){
     // connect with db
     connect(&db , SIGNAL(sendGames(QStringList)), &mw.rlgw, SLOT(getGames(QStringList)));
-    connect(&db , SIGNAL(sendMoves(QStringList)), &mw.gw, SLOT(getMoves(QStringList)));
+    connect(&db , SIGNAL(sendMoves(QStringList)), &mw.rlgw.gw, SLOT(getMoves(QStringList)));
     connect(&db , SIGNAL(sendMoves(QVector<Move>)),
             &br, SLOT(initBoard(QVector<Move>)));
     connect(&bg , SIGNAL(sendLastMove(const std::pair<QString, Move>&)),
@@ -29,8 +29,8 @@ Logic::Logic(QObject *parent) : QObject(parent){
 
     // connect business logic with its representation (replay)
     connect(&bg, SIGNAL(moved(int*const*const, int, bool)),
-            mw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
-     connect(&mw.gw, SIGNAL(selectedMove(int)), &br, SLOT(move(int)));
+            mw.rlgw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
+     connect(&mw.rlgw.gw, SIGNAL(selectedMove(int)), &br, SLOT(move(int)));
 
     bg.initBoard();
 }
