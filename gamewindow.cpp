@@ -66,7 +66,7 @@ void GameWindow::on_exit_clicked()
 
 void GameWindow::on_rotateButton()
 {
-        myBoard->rotateBoard();
+        board->rotateBoard();
 }
 
 

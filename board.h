@@ -21,14 +21,11 @@ public:
         int32_t cell_add2;
         int32_t status;
     };
-    void rotateBoard();
 
 private:
     bool turn;
-    bool turnRepl;
     Men **fullBoard; // to check checks he-he 12*12
     Men **board;  // Основная доска
-    int **boardRepl;
     Men **rotated;  // Временная доска для поворота
     QVector<Move> moves;
     int nMove;
@@ -41,7 +38,6 @@ public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
     void initBoard();
-    void initReplBoard(QVector<Move> moves);
     void moveReplay(int nMove);
 private:
     struct MoveStruct{Men moved; Men beated; QPoint from; QPoint to; QPoint beatedPoint;};

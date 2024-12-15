@@ -27,25 +27,6 @@ Board::~Board()
     delete []rotated;
 }
 
-void Board::rotateBoard() {
-    // Проверка, что указатели не являются нулевыми
-    if (!board || !rotated) return;
-
-    // Поворот
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            rotated[i][j] = board[9 - i][9 - j];
-        }
-    }
-
-    // Копирование обратно
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            board[i][j] = rotated[i][j];
-        }
-    }
-}
-
 void Board::move(const QPoint& from, const QPoint &to){
     if (board[from.x()][from.y()] == Men::None)
         return;
@@ -143,11 +124,13 @@ void Board::promotion(int man)
 }
 
 void Board::initBoard(){
-    turnRepl = true;
+    this->moves = QVector<Move>(moves);
+    nMove = -1;
+    turn = true;
     prom = false;
     lastMove = {Men::None, Men::None, {-1,-1}, {-1,-1}, {-1,-1}};
     checkingMen = {-1,-1};
-    statusRepl = Status::Play;
+    status = Status::Play;
     WKMoved = false; BKMoved = false;
     for (int i = 0; i < N; ++i){
         board[i][2] = board[i][3] = board[i][4] = board[i][5] = board[i][6] = board[i][7] = Men::None;
@@ -164,32 +147,9 @@ void Board::initBoard(){
             board[4][9] = Men::WQueen;
             board[5][0] = Men::BKing; BlackKing = {6, 0};
             board[5][9] = Men::WKing; WhiteKing = {6, 9};
-            emit moved((int*const*const)board, int(statusRepl), turnRepl);
+            emit moved((int*const*const)board, int(status), turn);
 }
 
-void Board::initReplBoard(QVector<Move> moves)
-{
-    this->moves = QVector<Move>(moves);
-    turn = true;
-    status = Status::Play;
-    nMove = -1;
-    for (int i = 0; i < 10; ++i){
-        board[i][2] = board[i][3] = board[i][4] = board[i][5] = board[i][6] =board[i][7] = Men::None;
-        board[i][8] = Men::WPawn;
-        board[i][1] = Men::BPawn;
-    }
-    board[1][0] = board[2][0] = board[7][0] = board[8][0] = Men::BKnight;
-    board[1][9] = board[2][9] = board[7][9] = board[8][9] = Men::WKnight;
-    board[3][0] = board[6][0] = Men::BBishop;
-    board[3][9] = board[6][9] = Men::WBishop;
-    board[0][0] = board[9][0] = Men::BRook;
-    board[0][9] = board[9][9] = Men::WRook;
-    board[4][0] = Men::BQueen;
-    board[4][9] = Men::WQueen;
-    board[5][0] = Men::BKing;
-    board[5][9] = Men::WKing;
-    emit moved(boardRepl, int(status), turn);
-}
 
 void Board::moveReplay(int nMove)
 {
@@ -204,7 +164,7 @@ void Board::moveReplay(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = (ms[i] / 13) % 13 - 6;
-                boardRepl[x][y] = men;
+                //board[x][y] = men;
             }
         }
         while (nMove < this->nMove){
@@ -215,15 +175,17 @@ void Board::moveReplay(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = ms[i] % 13 - 6;
-                boardRepl[x][y] = men;
+                //board[x][y] = men;
             }
             --this->nMove;
         }
         status = Status(moves[this->nMove].status);
         turn = nMove % 2;
-        emit moved(boardRepl, int(status), turn);
+        //emit moved(board, int(status), turn);
     }
 }
+
+
 
 void deleteBoard(Men** board) {
     for (int i = 0; i < 10; ++i) {

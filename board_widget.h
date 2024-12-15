@@ -18,6 +18,7 @@ public:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
+    void rotateBoard();
 private:
     QString getManPicPath(int m);
 signals:

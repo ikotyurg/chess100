@@ -30,7 +30,7 @@ Logic::Logic(QObject *parent) : QObject(parent){
     // connect business logic with its representation (replay)
     connect(&bg, SIGNAL(moved(int*const*const, int, bool)),
             mw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
-    connect(&mw.gw, SIGNAL(selectedMove(int)), &bg, SLOT(move(int)));
+    connect(&mw.gw, SIGNAL(selectedMove(int)), &bg, SLOT(moveRepl(int)));
 
     bg.initBoard();
 }
