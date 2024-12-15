@@ -18,34 +18,19 @@
     <rect>
      <x>-10</x>
      <y>20</y>
-     <width>1200</width>
+     <width>1251</width>
      <height>800</height>
     </rect>
    </property>
    <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
+    <enum>QFrame::Shape::NoFrame</enum>
    </property>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>0</y>
-      <width>351</width>
-      <height>711</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>1181</width>
+      <width>801</width>
       <height>80</height>
      </rect>
     </property>
@@ -101,7 +86,7 @@
      <item>
       <spacer name="horizontalSpacer_6">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Orientation::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -128,7 +113,7 @@
      </font>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Shape::NoFrame</enum>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
@@ -192,7 +177,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Orientation::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -204,15 +189,23 @@
      </item>
     </layout>
    </widget>
-   <widget class="QListView" name="listView">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>89</y>
-      <width>347</width>
+      <x>820</x>
+      <y>90</y>
+      <width>381</width>
       <height>611</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="rightMargin">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QListView" name="listView"/>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

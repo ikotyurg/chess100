@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    board_replay.cpp \
         main.cpp \
     board.cpp \
     logic.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
 
 HEADERS += \
     board.h \
+    board_replay.h \
     men.h \
     logic.h \
     status.h \
