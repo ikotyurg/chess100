@@ -164,7 +164,7 @@ void Board::moveReplay(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = (ms[i] / 13) % 13 - 6;
-                //board[x][y] = men;
+                board[x][y] = static_cast<Men>(men);
             }
         }
         while (nMove < this->nMove){
@@ -175,13 +175,21 @@ void Board::moveReplay(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = ms[i] % 13 - 6;
-                //board[x][y] = men;
+                board[x][y] = static_cast<Men>(men);
             }
             --this->nMove;
         }
         status = Status(moves[this->nMove].status);
         turn = nMove % 2;
-        //emit moved(board, int(status), turn);
+        int** intBoard = new int*[10]; // создайте массив int
+        for (int i = 0; i < 10; i++) {
+            intBoard[i] = new int[10]; // создайте второй уровень массива
+            for (int j = 0; j < 10; j++) {
+                intBoard[i][j] = static_cast<int>(board[i][j]); // делаем приведение
+            }
+        }
+
+        emit moved(intBoard, int(status), turn);
     }
 }
 

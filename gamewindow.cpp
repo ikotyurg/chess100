@@ -82,4 +82,3 @@ void GameWindow::getMoves(QStringList moves)
     model->setStringList(moves);
     ui->listView->setModel(model);
 }
-
