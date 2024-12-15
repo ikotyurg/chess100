@@ -21,7 +21,7 @@ public:
         int32_t cell_add2;
         int32_t status;
     };
-
+    void rotateBoard();
 private:
     bool turn;
     Men **fullBoard; // to check checks he-he 12*12
@@ -34,6 +34,7 @@ signals:
     void promotion(bool);
     void message(QString msg);
     void sendLastMove(const std::pair<QString, Move>& move);
+    void boardRotated(int *const *const board, int status, bool turn);
 public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);

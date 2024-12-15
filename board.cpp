@@ -20,11 +20,47 @@ Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
 Board::~Board()
 {
     for (int i = 0; i < N + 4; ++i){
-        delete []fullBoard[i];
-        delete []rotated[i];
+        delete [] fullBoard[i];
+        delete [] rotated[i];
     }
-    delete []fullBoard;
-    delete []rotated;
+    delete [] fullBoard;
+    delete [] rotated;
+}
+
+void Board::rotateBoard()
+{
+    Men** rotated = new Men*[10];
+            for (int i = 0; i < 10; ++i) {
+                rotated[i] = new Men[10];
+        // Поворачиваем доску на 180 градусов
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                rotated[i][j] = board[9 - i][9 - j];
+            }
+        }
+        }
+
+            for (int i = 0; i < 10; ++i) {
+                for (int j = 0; j < 10; ++j) {
+                    rotated[i][j] = board[9 - i][9 - j];
+                }
+        // Копируем повернутую доску обратно в оригинальный массив
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                board[i][j] = rotated[i][j];
+            }
+}
+}
+            int** intBoard = new int*[10]; // создайте массив int
+            for (int i = 0; i < 10; i++) {
+                intBoard[i] = new int[10]; // создайте второй уровень массива
+                for (int j = 0; j < 10; j++) {
+                    intBoard[i][j] = static_cast<int>(board[i][j]); // делаем приведение
+                }
+            }
+
+            emit moved(intBoard, int(status), turn);
+
 }
 
 void Board::move(const QPoint& from, const QPoint &to){
