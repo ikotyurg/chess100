@@ -151,9 +151,6 @@ void Board::initBoard(){
 }
 
 
-
-
-
 void deleteBoard(Men** board) {
     for (int i = 0; i < 10; ++i) {
         delete[] board[i];

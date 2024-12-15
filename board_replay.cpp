@@ -2,9 +2,9 @@
 
 BoardReplay::BoardReplay(QObject *parent) : QObject(parent)
 {
-    board = new int*[8];
-    for (int i = 0; i < 8; ++i){
-        board[i] = new int[8];
+    board = new int*[10];
+    for (int i = 0; i < 10; ++i){
+        board[i] = new int[10];
     }
 }
 
@@ -14,21 +14,21 @@ void BoardReplay::initBoard(QVector<Move> moves)
     turn = true;
     status = Status::Play;
     nMove = -1;
-    for (int i = 0; i < 8; ++i){
-            board[i][2] = board[i][3] = board[i][4] = board[i][5] = Men::None;
-            board[i][6] = Men::WPawn;
+    for (int i = 0; i < 10; ++i){
+            board[i][2] = board[i][3] = board[i][4] = board[i][5] =board[i][6] = board[i][7] = Men::None;
+            board[i][8] = Men::WPawn;
             board[i][1] = Men::BPawn;
     }
-    board[1][0] = board[6][0] = Men::BKnight;
-    board[1][7] = board[6][7] = Men::WKnight;
-    board[2][0] = board[5][0] = Men::BBishop;
-    board[2][7] = board[5][7] = Men::WBishop;
-    board[0][0] = board[7][0] = Men::BRook;
-    board[0][7] = board[7][7] = Men::WRook;
-    board[3][0] = Men::BQueen;
-    board[3][7] = Men::WQueen;
-    board[4][0] = Men::BKing;
-    board[4][7] = Men::WKing;
+    board[1][0] = board[2][0] = board[7][0] = board[8][0] = Men::BKnight;
+    board[1][9] = board[2][9] = board[7][8] = board[8][9] = Men::WKnight;
+    board[3][0] = board[6][0] = Men::BBishop;
+    board[3][9] = board[6][9] = Men::WBishop;
+    board[0][0] = board[9][0] = Men::BRook;
+    board[0][9] = board[9][9] = Men::WRook;
+    board[4][0] = Men::BQueen;
+    board[4][9] = Men::WQueen;
+    board[5][0] = Men::BKing;
+    board[5][9] = Men::WKing;
     emit moved(board, int(status), turn);
 }
 
