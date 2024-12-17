@@ -13,4 +13,12 @@
         <file>img/rook-black.png</file>
         <file>img/rook-white.png</file>
     </qresource>
+    <qresource prefix="/icons"/>
+    <qresource prefix="/">
+        <file>img/icons/close_board.png</file>
+        <file>img/icons/flip_board.png</file>
+        <file>img/icons/game_new.png</file>
+        <file>img/icons/Open_game.png</file>
+        <file>img/icons/save.png</file>
+    </qresource>
 </RCC>

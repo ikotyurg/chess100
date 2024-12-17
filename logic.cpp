@@ -15,9 +15,9 @@ Logic::Logic(QObject *parent) : QObject(parent){
     connect(&mw.rlgw , SIGNAL(loadGames()), &db, SLOT(sendGames()));
 
     // connect business logic with its representation (game)
-    connect(&bg , SIGNAL(moved(int*const*const, int, bool)),
+    connect(&bg , SIGNAL(moved(QVector <Men>, int, bool)),
             mw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
-    connect(&bg , SIGNAL(moved(int*const*const, int, bool)),
+    connect(&bg , SIGNAL(moved(QVector <Men>, int, bool)),
             mw.gw.board, SLOT(setBoard(int*const*const, int, bool)));
     connect(&bg , SIGNAL(promotion(bool)), &mw.gw, SIGNAL(promotion(bool)));
     connect(mw.gw.board , SIGNAL(sendMove(const QPoint, const QPoint)),

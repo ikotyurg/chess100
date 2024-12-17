@@ -2,10 +2,8 @@
 
 BoardReplay::BoardReplay(QObject *parent) : QObject(parent)
 {
-    board = new int*[10];
-    for (int i = 0; i < 10; ++i){
-        board[i] = new int[10];
-    }
+    board.resize(100); // Установим необходимый размер вектора
+    std::fill(board.begin(), board.end(), Men::None); // Заполняем вектор значением Men::None
 }
 
 void BoardReplay::initBoard(QVector<Move> moves)
@@ -15,20 +13,25 @@ void BoardReplay::initBoard(QVector<Move> moves)
     status = Status::Play;
     nMove = -1;
     for (int i = 0; i < 10; ++i){
-            board[i][2] = board[i][3] = board[i][4] = board[i][5] =board[i][6] = board[i][7] = Men::None;
-            board[i][8] = Men::WPawn;
-            board[i][1] = Men::BPawn;
-    }
-    board[1][0] = board[2][0] = board[7][0] = board[8][0] = Men::BKnight;
-    board[1][9] = board[2][9] = board[7][8] = board[8][9] = Men::WKnight;
-    board[3][0] = board[6][0] = Men::BBishop;
-    board[3][9] = board[6][9] = Men::WBishop;
-    board[0][0] = board[9][0] = Men::BRook;
-    board[0][9] = board[9][9] = Men::WRook;
-    board[4][0] = Men::BQueen;
-    board[4][9] = Men::WQueen;
-    board[5][0] = Men::BKing;
-    board[5][9] = Men::WKing;
+        board[i  + 20]  = Men::None;
+        board[i + 30] = Men::None;
+        board[i + 40] = Men::None;
+        board[i + 50] = Men::None;
+        board[i + 60] = Men::None;
+        board[i + 70] = Men::None;
+                       board[i + 80] = Men::WPawn;
+                       board[i + 10] = Men::BPawn;
+               }
+               board[1] = board[7] = board[2] = board[8] = Men::BKnight;
+               board[91] = board[92] = board[97] = board[98] = Men::WKnight;
+               board[3] = board[6] = Men::BBishop;
+               board[93] = board[96] = Men::WBishop;
+               board[0] = board[9] = Men::BRook;
+               board[90] = board[99] = Men::WRook;
+               board[4] = Men::BQueen;
+               board[94] = Men::WQueen;
+               board[5] = Men::BKing;
+               board[95] = Men::WKing;
     emit moved(board, int(status), turn);
 }
 
@@ -45,7 +48,7 @@ void BoardReplay::move(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = (ms[i] / 13) % 13 - 6;
-                board[x][y] = men;
+                board[x + 10 * y] = static_cast<Men>(men);
             }
         }
         while (nMove < this->nMove){
@@ -56,7 +59,7 @@ void BoardReplay::move(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = ms[i] % 13 - 6;
-                board[x][y] = men;
+                board[x + 10 * y] = static_cast<Men>(men);
             }
             --this->nMove;
         }

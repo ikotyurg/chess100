@@ -56,20 +56,20 @@ void BoardWidget::mouseDoubleClickEvent(QMouseEvent *event){
 
 void BoardWidget::rotateBoard()
 {
-    int rotated[10][10];
-    // Поворот
-       for (int i = 0; i < 10; ++i) {
-           for (int j = 0; j < 10; ++j) {
-               rotated[i][j] = matrix[9 - i][9 - j];
-           }
-       }
+    // int rotated[10][10];
+    // // Поворот
+    //    for (int i = 0; i < 10; ++i) {
+    //        for (int j = 0; j < 10; ++j) {
+    //            rotated[i][j] = matrix[9 - i][9 - j];
+    //        }
+    //    }
 
-       // Копирование обратно
-       for (int i = 0; i < 10; ++i) {
-           for (int j = 0; j < 10; ++j) {
-               matrix[i][j] = rotated[i][j];
-           }
-       }
+    //    // Копирование обратно
+    //    for (int i = 0; i < 10; ++i) {
+    //        for (int j = 0; j < 10; ++j) {
+    //            matrix[i][j] = rotated[i][j];
+    //        }
+    //    }
        //setBoard(matrix, status, turn);
 }
 

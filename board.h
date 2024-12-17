@@ -24,17 +24,17 @@ public:
     void rotateBoard();
 private:
     bool turn;
-    Men **fullBoard; // to check checks he-he 12*12
-    Men **board;  // Основная доска
-    Men **rotated;  // Временная доска для поворота
+    QVector <Men> fullBoard; // to check checks he-he 12*12
+    QVector <Men> board;  // Основная доска
+    QVector <Men> **rotated;  // Временная доска для поворота
     QVector<Move> moves;
     int nMove;
 signals:
-    void moved(int *const *const board, int status, bool turn);
+    void moved(QVector <Men> board, int status, bool turn);
     void promotion(bool);
     void message(QString msg);
     void sendLastMove(const std::pair<QString, Move>& move);
-    void boardRotated(int *const *const board, int status, bool turn);
+    void boardRotated(QVector <Men> board, int status, bool turn);
 public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);

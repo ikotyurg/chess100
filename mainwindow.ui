@@ -18,7 +18,7 @@
     <rect>
      <x>60</x>
      <y>40</y>
-     <width>484</width>
+     <width>508</width>
      <height>261</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@
        </font>
       </property>
       <property name="text">
-       <string>ШАХМАТЫ - 100</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/img/img/king-white.png&quot;/&gt;ШАХМАТЫ - 100&lt;img src=&quot;:/img/img/king-black.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -45,7 +45,11 @@
          </font>
         </property>
         <property name="text">
-         <string>Продолжить партию</string>
+         <string>Загрузить партию</string>
+        </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/img/icons/Open_game.png</normaloff>:/img/icons/Open_game.png</iconset>
         </property>
        </widget>
       </item>
@@ -59,6 +63,10 @@
         <property name="text">
          <string>Новая партия</string>
         </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/img/icons/game_new.png</normaloff>:/img/icons/game_new.png</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -68,8 +76,15 @@
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Выход</string>
+        </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/img/icons/close_board.png</normaloff>:/img/icons/close_board.png</iconset>
         </property>
        </widget>
       </item>
@@ -78,7 +93,9 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>ExitButton</sender>
