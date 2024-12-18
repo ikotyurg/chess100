@@ -164,17 +164,17 @@ bool Board::canManMove(const QPoint &from, const QPoint &to){
         board[from.x() + 10 * from.y()] == Men::None ||
         board[from.x() + 10 * from.y()] * board[to.x() + 10 * to.y()] > 0) return false;
 
-    if      (abs(board[from.x() + 10 * from.y()]) == 1)
+    if ((abs(board[from.x() + 10 * from.y()]) == 1) || (abs(board[from.x() - 10 * from.y()]) == 1))
         return canPawnMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 2)
+    else if ((abs(board[from.x() + 10 * from.y()]) == 2) || (abs(board[from.x() - 10 * from.y()]) == 2))
         return canKnightMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 3)
+    else if ((abs(board[from.x() + 10 * from.y()]) == 3) || (abs(board[from.x() - 10 * from.y()]) == 3))
         return canBishopMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 4)
+    else if ((abs(board[from.x() + 10 * from.y()]) == 4) || (abs(board[from.x() - 10 * from.y()]) == 4))
         return canRookMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 5)
+    else if ((abs(board[from.x() + 10 * from.y()]) == 5) || (abs(board[from.x() - 10 * from.y()]) == 5))
         return canQueenMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 6)
+    else if ((abs(board[from.x() + 10 * from.y()]) == 6) || (abs(board[from.x() - 10 * from.y()]) == 6))
         return canKingMove(from, to);
     else return false;
 }
@@ -182,7 +182,7 @@ bool Board::canManMove(const QPoint &from, const QPoint &to){
 bool Board::canMoveInTurn(const QPoint &from, const QPoint &to){
     if (status == Status::Mate || status == Status::Draw || status == Status::StaleMate)
         return false;
-    if ((turn ? 1 : -1) * board[from.x() + 10 * from.y()] <= 0) return false;
+    if (((turn ? 1 : -1) * board[from.x() + 10 * from.y()] <= 0) || ((turn ? 1 : -1) * board[from.x() - 10 * from.y()] <= 0)) return false;
     return canManMove(from, to);
 }
 
