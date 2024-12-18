@@ -3,57 +3,31 @@
 #include <iostream>
 
 Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
-    board.resize(100); // Установим необходимый размер вектора
-    std::fill(board.begin(), board.end(), Men::None); // Заполняем вектор значением Men::None
-    fullBoard.resize(144); // Установим необходимый размер вектора
-    std::fill(fullBoard.begin(), fullBoard.end(), Men::None); // Заполняем вектор значением Men::None
+    board.resize(100); // Основная доска
+    std::fill(board.begin(), board.end(), Men::None);
+    fullBoard.resize(144); // Полная доска
+    std::fill(fullBoard.begin(), fullBoard.end(), Men::None);
+    rotatedBoard.resize(100); // Доска для поворота
+    std::fill(rotatedBoard.begin(), rotatedBoard.end(), Men::None);
     initBoard();
 }
 
 Board::~Board()
 {
-    // for (int i = 0; i < N + 4; ++i){
-    //     delete [] fullBoard[i];
-    //     delete [] rotated[i];
-    // }
-    // delete [] fullBoard;
-    // delete [] rotated;
+    board.clear();
+    fullBoard.clear();
+    rotatedBoard.clear();
 }
 
 void Board::rotateBoard()
 {
-//     Men** rotated = new Men*[10];
-//             for (int i = 0; i < 10; ++i) {
-//                 rotated[i] = new Men[10];
-//         // Поворачиваем доску на 180 градусов
-//         for (int i = 0; i < 10; ++i) {
-//             for (int j = 0; j < 10; ++j) {
-//                 rotated[i][j] = board[9 - i][9 - j];
-//             }
-//         }
-//         }
-
-//             for (int i = 0; i < 10; ++i) {
-//                 for (int j = 0; j < 10; ++j) {
-//                     rotated[i][j] = board[9 - i][9 - j];
-//                 }
-//         // Копируем повернутую доску обратно в оригинальный массив
-//         for (int i = 0; i < 10; ++i) {
-//             for (int j = 0; j < 10; ++j) {
-//                 board[i][j] = rotated[i][j];
-//             }
-// }
-// }
-            // int** intBoard = new int*[10]; // создайте массив int
-            // for (int i = 0; i < 10; i++) {
-            //     intBoard[i] = new int[10]; // создайте второй уровень массива
-            //     for (int j = 0; j < 10; j++) {
-            //         intBoard[i][j] = static_cast<int>(board[i + 10 * j]); // делаем приведение
-            //     }
-            // }
-
-            // emit moved(intBoard, int(status), turn);
-
+    for (int i = 0; i < 100; ++i) {
+        rotatedBoard[i] = board[99 - i];
+        }
+    for (int i = 0; i < 100; ++i) {
+        board[i] = rotatedBoard[i];
+        }
+    emit boardRotated((QVector <Men>)board, int(status), turn);
 }
 
 void Board::move(const QPoint& from, const QPoint &to){
@@ -130,7 +104,7 @@ void Board::move(const QPoint& from, const QPoint &to){
         turn = !turn;
         movedMen.second.status = status;
         movedMen.first += statusToStr(status);
-        emit moved((QVector <Men>)board, int(status), turn);
+        emit moved(QVector <Men>(board), int(status), turn);
         emit sendLastMove(movedMen);
     }
 }
@@ -147,7 +121,7 @@ void Board::promotion(int man)
         movedMen.second.status = status;
         movedMen.first += "=" + menToStr(Men(man));
         movedMen.first += statusToStr(status);
-        emit moved((QVector <Men>)board, int(status), turn);
+        emit moved(QVector <Men>(board), int(status), turn);
         emit sendLastMove(movedMen);
     }
 }
@@ -176,15 +150,12 @@ void Board::initBoard(){
             board[94] = Men::WQueen;
             board[5] = Men::BKing; BlackKing = {5, 0};
             board[95] = Men::WKing; WhiteKing = {5, 9};
-            emit moved((QVector <Men>)board, int(status), turn);
+            emit moved(QVector <Men>(board), int(status), turn);
 }
 
 
-void deleteBoard(Men** board) {
-    for (int i = 0; i < 10; ++i) {
-        delete[] board[i];
-    }
-    delete[] board;
+void deleteBoard(QVector<Men> board) {
+    board.clear();
 }
 
 bool Board::canManMove(const QPoint &from, const QPoint &to){
@@ -204,10 +175,6 @@ bool Board::canManMove(const QPoint &from, const QPoint &to){
     else if (abs(board[from.x() + 10 * from.y()]) == 5)
         return canQueenMove(from, to);
     else if (abs(board[from.x() + 10 * from.y()]) == 6)
-        return canKingMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 7)
-        return canQueenMove(from, to);
-    else if (abs(board[from.x() + 10 * from.y()]) == 8)
         return canKingMove(from, to);
     else return false;
 }

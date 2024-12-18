@@ -25,8 +25,7 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(&saveGameDialog, SIGNAL(save(QString)),  this, SIGNAL(saveGame(QString)));
     connect(ui->savegame, SIGNAL(clicked(bool)), &saveGameDialog, SLOT(exec()));
     //connect(this, SIGNAL(rotateBoard()), &board, SLOT(rotBrd()));
-    QPushButton *rotateButton = new QPushButton("Перевернуть доску", this);
-    connect(rotateButton, &QPushButton::clicked, this, &GameWindow::on_rotateButton);
+    connect(ui->rotateButton, &QPushButton::clicked, this, &GameWindow::on_rotateButton_clicked);
  }
 
 GameWindow::~GameWindow()
@@ -63,13 +62,6 @@ void GameWindow::on_exit_clicked()
 }
 
 
-
-void GameWindow::on_rotateButton()
-{
-        board->rotateBoard();
-}
-
-
 void GameWindow::on_listView_clicked(const QModelIndex &index)
 {
     qDebug() << "INDEX: " << index.row();
@@ -82,3 +74,10 @@ void GameWindow::getMoves(QStringList moves)
     model->setStringList(moves);
     ui->listView->setModel(model);
 }
+
+
+void GameWindow::on_rotateButton_clicked()
+{
+    myBoard->rotateBoard();
+}
+

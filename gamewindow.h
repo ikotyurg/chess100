@@ -34,11 +34,11 @@ private slots:
 
     void on_exit_clicked();
 
-    void on_rotateButton(); // Обработчик нажатия кнопки
-
     void on_listView_clicked(const QModelIndex &index);
 
     void getMoves(QStringList);
+
+    void on_rotateButton_clicked();
 
 private:
     Board* myBoard; // Указатель на объект Board
