@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
-
+#include "men.h"
 
 class BoardWidget : public QWidget
 {
@@ -25,7 +25,7 @@ signals:
     void sendTurn(bool);
     void sendMove(const QPoint &from, const QPoint &to);
 public slots:
-    void setBoard(int *const *const men = nullptr, int status = 0, bool turn = true);
+    void setBoard(QVector<Men>, int status = 0, bool turn = true);
 public:
     QLabel **cells;
     int matrix[10][10]{

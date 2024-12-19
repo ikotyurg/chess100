@@ -23,7 +23,7 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - wh
         }
     }
 
-    setBoard();
+    // setBoard();
 }
 
 void BoardWidget::mousePressEvent(QMouseEvent *event){
@@ -81,29 +81,7 @@ void BoardWidget::mouseReleaseEvent(QMouseEvent *event){
     }
 }
 
-void BoardWidget::setBoard(int *const *const men, int status, bool turn){
-    if (men){
-        for (int x = 0; x < nCells; ++x)
-            for (int y = 0; y < nCells; ++y)
-                if (men[x][y] != matrix[x][y]){
-                    matrix[x][y] = men[x][y];
-                    cells[x][y].setPixmap(QPixmap(getManPicPath(matrix[x][y])).scaled(cellSize,
-                                                                                      cellSize,
-                                                                                      Qt::KeepAspectRatio));
-                }
-    } else
-        for (int x = 0; x < nCells; ++x){
-            for (int y = 0; y < nCells; ++y)
-                if (defMenPosition[x][y] != matrix[x][y]){
-                    matrix[x][y] = defMenPosition[x][y];
-                    cells[x][y].setPixmap(QPixmap(getManPicPath(matrix[x][y])).scaled(cellSize,
-                                                                                       cellSize,
-                                                                                       Qt::KeepAspectRatio));
-                }
-        }
-    emit sendStatus(status);
-    emit sendTurn(turn);
-}
+
 
 
 QString BoardWidget::getManPicPath(int m)
@@ -126,4 +104,30 @@ QString BoardWidget::getManPicPath(int m)
         case 0:
         default: return nullptr;
     }
+}
+
+void BoardWidget::setBoard(QVector <Men> board, int status, bool turn)
+{
+    if (board.size() > 0){
+        for (int x = 0; x < nCells; ++x)
+            for (int y = 0; y < nCells; ++y)
+                if (board[x + 10 * y] != matrix[x][y]){
+                    matrix[x][y] = board[x + 10 * y];
+                    cells[x][y].setPixmap(QPixmap(getManPicPath(matrix[x][y])).scaled(cellSize,
+                                                                                      cellSize,
+                                                                                      Qt::KeepAspectRatio));
+                }
+    } else
+        for (int x = 0; x < nCells; ++x){
+            for (int y = 0; y < nCells; ++y)
+                if (defMenPosition[x][y] != matrix[x][y]){
+                    matrix[x][y] = defMenPosition[x][y];
+                    cells[x][y].setPixmap(QPixmap(getManPicPath(matrix[x][y])).scaled(cellSize,
+                                                                                      cellSize,
+                                                                                      Qt::KeepAspectRatio));
+                }
+        }
+    emit sendStatus(status);
+    emit sendTurn(turn);
+
 }

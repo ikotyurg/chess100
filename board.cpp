@@ -24,6 +24,7 @@ void Board::rotateBoard()
     for (int i = 0; i < 100; ++i) {
         rotatedBoard[i] = board[99 - i];
         }
+    board.clear();
     for (int i = 0; i < 100; ++i) {
         board[i] = rotatedBoard[i];
         }
@@ -136,9 +137,8 @@ void Board::initBoard(){
     status = Status::Play;
     WKMoved = false; BKMoved = false;
     for (int i = 0; i < N; ++i){
-        board[i  + 20] = board[i + 30] = board[i + 40] = board[i + 50] = board[i + 60] = board[i + 70] = Men::None;
-                    board[i + 80] = Men::WPawn;
-                    board[i + 10] = Men::BPawn;
+                board[i + 80] = Men::WPawn;
+                board[i + 10] = Men::BPawn;
             }
             board[1] = board[7] = board[2] = board[8] = Men::BKnight;
             board[91] = board[92] = board[97] = board[98] = Men::WKnight;
