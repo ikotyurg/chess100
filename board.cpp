@@ -21,7 +21,13 @@ Board::~Board()
 
 void Board::rotateBoard()
 {
-    std::reverse(board.begin(), board.end());
+    for (int i = 0; i < 100; ++i) {
+        rotatedBoard[i] = board[99 - i];
+        }
+    board.clear();
+    for (int i = 0; i < 100; ++i) {
+        board[i] = rotatedBoard[i];
+        }
     emit boardRotated((QVector <Men>)board, int(status), turn);
 }
 
