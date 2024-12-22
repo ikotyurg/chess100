@@ -1,115 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QWidget" name="MainWindow">
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>595</width>
-    <height>349</height>
+    <width>1400</width>
+    <height>800</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Шахматы-100. Главное окно</string>
+  <property name="font">
+   <font>
+    <pointsize>14</pointsize>
+   </font>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <property name="windowTitle">
+   <string>Шахматы-100</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="QIcon::ThemeIcon::ViewRestore"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>690</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Статус:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="status">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>690</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>0</y>
+      <width>1381</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="newgame_2">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Новая партия&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/icons/img/icons/game_new.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="replay">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Открыть партию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/icons/img/icons/Open_game.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="newgame_4">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сохранить партию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/icons/img/icons/save.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="rotate">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Поворот  доски&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/icons/img/icons/flip_board.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exit">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/icons/img/icons/close_board.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>871</width>
+      <height>621</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QGraphicsView" name="board_frame">
+       <property name="baseSize">
+        <size>
+         <width>660</width>
+         <height>660</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>60</y>
+      <width>521</width>
+      <height>621</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="moves">
+        <attribute name="title">
+         <string>Запись партии</string>
+        </attribute>
+        <widget class="QListView" name="listView">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>501</width>
+           <height>561</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="games">
+        <attribute name="title">
+         <string>Список партий</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>690</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ход:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="turn">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>690</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>40</y>
-     <width>508</width>
-     <height>261</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1400</width>
+     <height>32</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>30</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/img/img/king-white.png&quot;/&gt;ШАХМАТЫ - 100&lt;img src=&quot;:/img/img/king-black.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="replay">
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Загрузить партию</string>
-        </property>
-        <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/img/icons/Open_game.png</normaloff>:/img/icons/Open_game.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="newgame">
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Новая партия</string>
-        </property>
-        <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/img/icons/game_new.png</normaloff>:/img/icons/game_new.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ExitButton">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Выход</string>
-        </property>
-        <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/img/icons/close_board.png</normaloff>:/img/icons/close_board.png</iconset>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
-   <sender>ExitButton</sender>
+   <sender>exit</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>506</x>
-     <y>239</y>
+     <x>1172</x>
+     <y>72</y>
     </hint>
     <hint type="destinationlabel">
-     <x>495</x>
-     <y>334</y>
+     <x>1046</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>

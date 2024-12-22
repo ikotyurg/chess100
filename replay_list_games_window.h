@@ -2,7 +2,6 @@
 #define REPLAY_LIST_GAMES_WINDOW_H
 
 #include <QDialog>
-#include "gamewindow.h"
 
 namespace Ui {
 class ReplayListGamesWindow;
@@ -31,8 +30,6 @@ private slots:
     void on_gamesList_clicked(const QModelIndex &index);
 
     void on_exit_button_clicked();
-public:
-    GameWindow gw;
 };
 
 #endif // REPLAY_LIST_GAMES_WINDOW_H

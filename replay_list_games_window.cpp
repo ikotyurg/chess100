@@ -35,7 +35,6 @@ void ReplayListGamesWindow::on_gamesList_clicked(const QModelIndex &index)
     qDebug() << "name: " << index.data(Qt::DisplayRole).toString();
     emit loadGame(index.data(Qt::DisplayRole).toString());
     this->hide();
-    gw.exec();
     this->close();
 }
 

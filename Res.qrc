@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/pieces">
+        <file>img/pieces/rook-white.png</file>
+        <file>img/pieces/rook-black.png</file>
+        <file>img/pieces/queen-white.png</file>
+        <file>img/pieces/queen-black.png</file>
+        <file>img/pieces/pawn-white.png</file>
+        <file>img/pieces/pawn-black.png</file>
+        <file>img/pieces/knight-white.png</file>
+        <file>img/pieces/knight-black.png</file>
+        <file>img/pieces/king-white.png</file>
+        <file>img/pieces/king-black.png</file>
+        <file>img/pieces/bishop-white.png</file>
+        <file>img/pieces/bishop-black.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>img/icons/close_board.png</file>
+        <file>img/icons/flip_board.png</file>
+        <file>img/icons/game_new.png</file>
+        <file>img/icons/Open_game.png</file>
+        <file>img/icons/save.png</file>
+    </qresource>
+</RCC>
