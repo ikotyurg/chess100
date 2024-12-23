@@ -32,7 +32,7 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - wh
         verticalLabel->setAlignment(Qt::AlignCenter);
 
         // Установка цвета фона для ячеек с обозначениями
-        verticalLabel->setStyleSheet("QLabel { background-color : #BF8F30; font-size: 24px; font-weight: bold; color: darkRed; }");
+        verticalLabel->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
     }
 
     // Добавление строк с обозначениями вертикалей снизу
@@ -42,7 +42,7 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - wh
         verticalLabel->setAlignment(Qt::AlignCenter);
 
         // Установка цвета фона для ячеек с обозначениями
-        verticalLabel->setStyleSheet("QLabel { background-color : #BF8F30; font-size: 24px; font-weight: bold; color: darkRed; }");
+        verticalLabel->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
     }
 
     // Добавление строк с обозначениями горизонталей слева и справа
@@ -50,15 +50,15 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - wh
         QLabel *horizontalLabelLeft = new QLabel(hLiterals[i], this);
         horizontalLabelLeft->setGeometry(0, (nCells - i) * cellSize, cellSize, cellSize); // Смещение вправо
         horizontalLabelLeft->setAlignment(Qt::AlignCenter);
-        horizontalLabelLeft->setStyleSheet("QLabel { background-color : #BF8F30; font-size: 24px; font-weight: bold; color: darkRed; }");
+        horizontalLabelLeft->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
         QLabel *horizontalLabelRight = new QLabel(hLiterals[i], this);
         horizontalLabelRight->setGeometry((nCells + 1) * cellSize, (nCells - i) * cellSize, cellSize, cellSize); // Смещение вправо
         horizontalLabelRight->setAlignment(Qt::AlignCenter);
-        horizontalLabelRight->setStyleSheet("QLabel { background-color : #BF8F30; font-size: 24px; font-weight: bold; color: darkRed; }");
+        horizontalLabelRight->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
     }
 
     // Цвет для угловых ячеек
-       QString cornerColor = "#BF8F30";
+       QString cornerColor = "#b8a18a";
 
        // Добавление угловых ячеек
        QLabel *topLeftCorner = new QLabel(this);
