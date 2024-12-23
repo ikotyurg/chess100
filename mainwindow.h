@@ -7,6 +7,7 @@
 #include "promotiondialog.h"
 #include "savegamedialog.h"
 #include "board_widget.h"
+#include "replay_list_games_window.h"
 #include "men.h"
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    ReplayListGamesWindow rlgw;
 public:
     BoardWidget *board;
 
@@ -41,6 +43,8 @@ private slots:
     void getMoves(QStringList);
 
     void on_rotateButton_clicked();
+
+    void on_replay_clicked();
 
 private:
     Board* myBoard; // Указатель на объект Board

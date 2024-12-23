@@ -11,6 +11,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    board = new BoardWidget(ui->chessboard_frame);
+    auto geom = board->geometry();
+    geom.setX(0); geom.setY(0);
+    board->setGeometry(geom);
+    promDialog.setModal(true);
+    saveGameDialog.setModal(true);
+    connect(this, SIGNAL(promotion(bool)), &promDialog, SLOT(execute(bool)));
+    connect(&promDialog, SIGNAL(sendResult(int)),  this, SIGNAL(promotion(int)));
+    connect(board, SIGNAL(sendStatus(int)), this, SLOT(setStatus(int)));
+    connect(board, SIGNAL(sendTurn(bool)),   this, SLOT(setTurn(bool)));
+    connect(ui->newgame, SIGNAL(clicked(bool)), this, SIGNAL(newGame()));
+    connect(&saveGameDialog, SIGNAL(save(QString)),  this, SIGNAL(saveGame(QString)));
+    connect(ui->savegame, SIGNAL(clicked(bool)), &saveGameDialog, SLOT(exec()));
 }
 
 MainWindow::~MainWindow()
@@ -61,5 +74,14 @@ void MainWindow::getMoves(QStringList moves)
 void MainWindow::on_rotateButton_clicked()
 {
     myBoard->rotateBoard();
+}
+
+
+void MainWindow::on_replay_clicked()
+{
+    this->hide();
+    rlgw.load();
+    rlgw.exec();
+    this->show();
 }
 
