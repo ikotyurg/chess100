@@ -10,9 +10,9 @@ class BoardWidget : public QWidget
     Q_OBJECT
 
     QPoint movePoint;
-    int windowSize = 500;
+    int windowSize = 660;
     int nCells = 10;
-    int cellSize = 50;
+    int cellSize = 55;
 public:
     explicit BoardWidget(QWidget *parent = nullptr);
     void mousePressEvent(QMouseEvent *event) override;

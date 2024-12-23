@@ -26,7 +26,6 @@ private:
     bool turn;
     QVector <Men> fullBoard; // to check checks he-he 12*12
     QVector <Men> board;  // Основная доска
-    QVector <Men> rotatedBoard;  // Временная доска для поворота
     QVector<Move> moves;
     int nMove;
 signals:

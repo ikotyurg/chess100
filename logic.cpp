@@ -26,9 +26,8 @@ Logic::Logic(QObject *parent) : QObject(parent){
             &bg, SLOT(initBoard()));
 
     // connect business logic with its representation (replay)
-    connect(&bg, SIGNAL(boardRotated(QVector <Men>, int, bool)),
-            mw.board, SLOT(setBoard(QVector <Men>, int, bool)));
     connect(&mw, SIGNAL(selectedMove(int)), &br, SLOT(move(int)));
-
+    connect(&bg, SIGNAL(moved(QVector <Men>, int, bool)),
+                        mw.board, SLOT(setBoard(QVector <Men>, int, bool)));
     bg.initBoard();
 }

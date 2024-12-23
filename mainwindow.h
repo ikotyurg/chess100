@@ -40,11 +40,11 @@ private slots:
 
     void getMoves(QStringList);
 
-  //  void on_rotateButton_clicked();
+    void on_rotateButton_clicked();
 
 private:
     Board* myBoard; // Указатель на объект Board
-    Men** currentBoard; // Указатель на массив фигур
+
 private:
     PromotionDialog promDialog;
     SaveGameDialog saveGameDialog;

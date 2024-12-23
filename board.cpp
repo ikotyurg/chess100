@@ -7,8 +7,6 @@ Board::Board(bool t, QObject *parent) : QObject(parent), turn{t}{
     std::fill(board.begin(), board.end(), Men::None);
     fullBoard.resize(144); // Полная доска
     std::fill(fullBoard.begin(), fullBoard.end(), Men::None);
-    rotatedBoard.resize(100); // Доска для поворота
-    std::fill(rotatedBoard.begin(), rotatedBoard.end(), Men::None);
     initBoard();
 }
 
@@ -16,19 +14,12 @@ Board::~Board()
 {
     board.clear();
     fullBoard.clear();
-    rotatedBoard.clear();
 }
 
 void Board::rotateBoard()
 {
-    for (int i = 0; i < 100; ++i) {
-        rotatedBoard[i] = board[99 - i];
-        }
-    board.clear();
-    for (int i = 0; i < 100; ++i) {
-        board[i] = rotatedBoard[i];
-        }
-    emit boardRotated((QVector <Men>)board, int(status), turn);
+    std::reverse(board.begin(), board.end());
+    emit boardRotated(board, status, turn);
 }
 
 void Board::move(const QPoint& from, const QPoint &to){

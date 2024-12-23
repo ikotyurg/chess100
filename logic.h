@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include "mainwindow.h"
-#include "qvector.h"
 #include "board.h"
 #include "board_replay.h"
 

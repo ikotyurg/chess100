@@ -138,19 +138,19 @@ void BoardWidget::mouseReleaseEvent(QMouseEvent *event){
 QString BoardWidget::getManPicPath(int m)
 {
     switch (m) {
-        case 1: return QString(":/img/img/pawn-white.png");
-        case 2: return QString(":/img/img/knight-white.png");
-        case 3: return QString(":/img/img/bishop-white.png");
-        case 4: return QString(":/img/img/rook-white.png");
-        case 5: return QString(":/img/img/queen-white.png");
-        case 6: return QString(":/img/img/king-white.png");
+        case 1: return QString(":/pieces/img/pieces/pawn-white.png");
+        case 2: return QString(":/pieces/img/pieces/knight-white.png");
+        case 3: return QString(":/pieces/img/pieces/bishop-white.png");
+        case 4: return QString(":/pieces/img/pieces/rook-white.png");
+        case 5: return QString(":/pieces/img/pieces/queen-white.png");
+        case 6: return QString(":/pieces/img/pieces/king-white.png");
 
-        case -1: return QString(":/img/img/pawn-black.png");
-        case -2: return QString(":/img/img/knight-black.png");
-        case -3: return QString(":/img/img/bishop-black.png");
-        case -4: return QString(":/img/img/rook-black.png");
-        case -5: return QString(":/img/img/queen-black.png");
-        case -6: return QString(":/img/img/king-black.png");
+        case -1: return QString(":/pieces/img/pieces/pawn-black.png");
+        case -2: return QString(":/pieces/img/pieces/knight-black.png");
+        case -3: return QString(":/pieces/img/pieces/bishop-black.png");
+        case -4: return QString(":/pieces/img/pieces/rook-black.png");
+        case -5: return QString(":/pieces/img/pieces/queen-black.png");
+        case -6: return QString(":/pieces/img/pieces/king-black.png");
 
         case 0:
         default: return nullptr;

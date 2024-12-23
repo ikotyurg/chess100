@@ -55,6 +55,11 @@ void MainWindow::getMoves(QStringList moves)
 {
     QStringListModel *model = new QStringListModel();
         model->setStringList(moves);
-        ui->listView->setModel(model);
+        ui->listMoves->setModel(model);
+}
+
+void MainWindow::on_rotateButton_clicked()
+{
+    myBoard->rotateBoard();
 }
 
