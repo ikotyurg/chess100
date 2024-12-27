@@ -5,4 +5,4 @@
 
 Схема отношений класов:
 
-![image](https://github.com/user-attachments/assets/5c6f272a-21ca-4268-a5c2-eb96c6ff6ba6)
+![image](https://github.com/user-attachments/assets/aa0265c9-fe9c-4cc4-bda3-cacfd911b32a)
