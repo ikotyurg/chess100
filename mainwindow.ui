@@ -246,6 +246,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="turn">
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="statusLabel">
        <property name="maximumSize">
         <size>
@@ -263,19 +276,6 @@
        <property name="maximumSize">
         <size>
          <width>80</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="turn">
-       <property name="maximumSize">
-        <size>
-         <width>60</width>
          <height>16777215</height>
         </size>
        </property>
