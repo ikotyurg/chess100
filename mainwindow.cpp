@@ -74,6 +74,7 @@ void MainWindow::getMoves(QStringList moves)
 void MainWindow::on_rotateButton_clicked()
 {
     myBoard->rotateBoard();
+    board->rotateBoardLiterals();
 }
 
 

@@ -20,7 +20,7 @@ public:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     QVector<QString> vLiterals = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "K"};
     QVector<QString> hLiterals = {"10", "9", "8", "7", "6", "5", "4", "3", "2", "1"};
-
+    void rotateBoardLiterals();
 private:
     QString getManPicPath(int m);
 signals:

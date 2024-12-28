@@ -5,7 +5,6 @@
 #include "mainwindow.h"
 #include "board.h"
 #include "board_replay.h"
-
 #include "db_manager.h"
 
 class Logic : public QObject

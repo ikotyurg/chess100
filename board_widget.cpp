@@ -109,6 +109,12 @@ void BoardWidget::mouseDoubleClickEvent(QMouseEvent *event){
     mousePressEvent(event);
 }
 
+void BoardWidget::rotateBoardLiterals()
+{
+    std::reverse(hLiterals.begin(), hLiterals.end());
+    std::reverse(vLiterals.begin(), vLiterals.end());
+}
+
 void BoardWidget::mouseReleaseEvent(QMouseEvent *event){
     if (moveByClick){
         this->setCursor(QCursor());

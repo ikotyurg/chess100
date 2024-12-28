@@ -3,7 +3,7 @@
 
 Logic::Logic(QObject *parent) : QObject(parent){
     // connect with db
-    connect(&db , SIGNAL(sendGames(QStringList)), &mw, SLOT(getGames(QStringList)));
+    connect(&db , SIGNAL(sendGames(QStringList)), &mw.rlgw, SLOT(getGames(QStringList)));
     connect(&db , SIGNAL(sendMoves(QStringList)), &mw, SLOT(getMoves(QStringList)));
     connect(&db , SIGNAL(sendMoves(QVector<Move>)),
             &br, SLOT(initBoard(QVector<Move>)));

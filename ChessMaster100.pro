@@ -46,3 +46,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Res.qrc
+
+DISTFILES += \
+    ../chess100.png

@@ -19,7 +19,6 @@ Board::~Board()
 void Board::rotateBoard()
 {
     std::reverse(board.begin(), board.end());
-    emit boardRotated(board, status, turn);
 }
 
 void Board::move(const QPoint& from, const QPoint &to){
