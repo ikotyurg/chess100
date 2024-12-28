@@ -17,7 +17,6 @@ public:
 
     void load();
 
-
 private:
     Ui::ReplayListGamesWindow *ui;
 signals:
