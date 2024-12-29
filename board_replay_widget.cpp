@@ -16,28 +16,34 @@ BoardReplayWidget::BoardReplayWidget(QWidget *parent) : QWidget(parent) // turn 
         for (int j = (i) % 2; j < nCells; j += 2)
             cells[i][j].setStyleSheet("QLabel { background-color : white; }");
     }
-
     for (int i = 0; i < nCells; ++i){
         for (int j = 0; j < nCells; ++j){
             cells[i][j].setParent(this);
-            cells[i][j].setGeometry((i + 1) * cellSize, (j + 1) * cellSize, cellSize, cellSize); // Смещение на 1 ячейку
+            cells[i][j].setGeometry((i) * cellSize, (j) * cellSize, cellSize, cellSize); // Смещения нет
             cells[i][j].setPixmap(QPixmap(getManPicPath(defMenPosition[i][j])));
         }
     }
-    // Добавление строк с обозначениями вертикалей сверху
-    for (int i = 0; i < nCells; ++i) {
-        QLabel *verticalLabel = new QLabel(vLiterals[i], this);
-        verticalLabel->setGeometry((i + 1) * cellSize, 0, cellSize, cellSize); // Смещение вниз
-        verticalLabel->setAlignment(Qt::AlignCenter);
+    // for (int i = 0; i < nCells; ++i){
+    //     for (int j = 0; j < nCells; ++j){
+    //         cells[i][j].setParent(this);
+    //         cells[i][j].setGeometry((i + 1) * cellSize, (j + 1) * cellSize, cellSize, cellSize); // Смещение на 1 ячейку
+    //         cells[i][j].setPixmap(QPixmap(getManPicPath(defMenPosition[i][j])));
+    //     }
+    // }
+    // // Добавление строк с обозначениями вертикалей сверху
+    // for (int i = 0; i < nCells; ++i) {
+    //     QLabel *verticalLabel = new QLabel(vLiterals[i], this);
+    //     verticalLabel->setGeometry((i + 1) * cellSize, 0, cellSize, cellSize); // Смещение вниз
+    //     verticalLabel->setAlignment(Qt::AlignCenter);
 
-        // Установка цвета фона для ячеек с обозначениями
-        verticalLabel->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
-    }
+    //     // Установка цвета фона для ячеек с обозначениями
+    //     verticalLabel->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
+    // }
 
     // Добавление строк с обозначениями вертикалей снизу
     for (int i = 0; i < nCells; ++i) {
         QLabel *verticalLabel = new QLabel(vLiterals[i], this);
-        verticalLabel->setGeometry((i + 1) * cellSize, cellSize * 11, cellSize, cellSize); // Смещение вниз
+        verticalLabel->setGeometry(i * cellSize, cellSize * nCells, cellSize, cellSize); // Смещение вниз
         verticalLabel->setAlignment(Qt::AlignCenter);
 
         // Установка цвета фона для ячеек с обозначениями
@@ -46,35 +52,15 @@ BoardReplayWidget::BoardReplayWidget(QWidget *parent) : QWidget(parent) // turn 
 
     // Добавление строк с обозначениями горизонталей слева и справа
     for (int i = 0; i < nCells; ++i) {
-        QLabel *horizontalLabelLeft = new QLabel(hLiterals[i], this);
-        horizontalLabelLeft->setGeometry(0, (nCells - i) * cellSize, cellSize, cellSize); // Смещение вправо
-        horizontalLabelLeft->setAlignment(Qt::AlignCenter);
-        horizontalLabelLeft->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
+        // QLabel *horizontalLabelLeft = new QLabel(hLiterals[i], this);
+        // horizontalLabelLeft->setGeometry(0, (nCells - i) * cellSize, cellSize, cellSize); // Смещение вправо
+        // horizontalLabelLeft->setAlignment(Qt::AlignCenter);
+        // horizontalLabelLeft->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
         QLabel *horizontalLabelRight = new QLabel(hLiterals[i], this);
-        horizontalLabelRight->setGeometry((nCells + 1) * cellSize, (nCells - i) * cellSize, cellSize, cellSize); // Смещение вправо
+        horizontalLabelRight->setGeometry(nCells * cellSize, (nCells - i - 1) * cellSize, cellSize, cellSize); // Смещение вправо
         horizontalLabelRight->setAlignment(Qt::AlignCenter);
         horizontalLabelRight->setStyleSheet("QLabel { background-color : #b8a18a; font-size: 24px; font-weight: bold; color: darkRed; }");
     }
-
-    // Цвет для угловых ячеек
-       QString cornerColor = "#b8a18a";
-
-       // Добавление угловых ячеек
-       QLabel *topLeftCorner = new QLabel(this);
-       topLeftCorner->setGeometry(0, 0, cellSize, cellSize);
-       topLeftCorner->setStyleSheet("QLabel { background-color : " + cornerColor + "; }");
-
-       QLabel *topRightCorner = new QLabel(this);
-       topRightCorner->setGeometry((nCells + 1) * cellSize, 0, cellSize, cellSize);
-       topRightCorner->setStyleSheet("QLabel { background-color : " + cornerColor + "; }");
-
-       QLabel *bottomLeftCorner = new QLabel(this);
-       bottomLeftCorner->setGeometry(0, (nCells + 1) * cellSize, cellSize, cellSize);
-       bottomLeftCorner->setStyleSheet("QLabel { background-color : " + cornerColor + "; }");
-
-       QLabel *bottomRightCorner = new QLabel(this);
-       bottomRightCorner->setGeometry((nCells + 1) * cellSize, (nCells + 1) * cellSize, cellSize, cellSize);
-       bottomRightCorner->setStyleSheet("QLabel { background-color : " + cornerColor + "; }");
 
        setBoard();
 }

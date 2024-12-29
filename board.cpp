@@ -183,7 +183,7 @@ bool Board::canPawnMove(const QPoint &from, const QPoint &to){
             if (board[to.x()][to.y()] != Men::None)
                 return false;
         }else if (dPoint.y() == 2 * int(pawn)){ // move 2 cells
-            if (not (from.y() == ((turn)?6:1) && board[to.x()][to.y()] == Men::None
+            if (not (from.y() == ((turn)?8:1) && board[to.x()][to.y()] == Men::None
                                        && board[to.x()][to.y() + int(pawn)] == Men::None))
                 return false;
         }else if (dPoint.y() == 3 * int(pawn)){ // move 3 cells
@@ -297,8 +297,8 @@ bool Board::canKingMove(const QPoint &from, const QPoint &to){
                     board[8][to.y()] != Men::None ||
                     board[7][to.y()] != Men::None ||
                     board[6][to.y()] != Men::None) return false;
-            points.append({{7, to.y()},   rook});
-            points.append({{5, to.y()},   Men::None});
+            points.append({{9, to.y()},   rook});
+            points.append({{7, to.y()},   Men::None});
             bool result = hasCheck(turn);
             board[6][to.y()] = board[5][to.y()];
             board[5][to.y()] = Men::None;
@@ -307,8 +307,8 @@ bool Board::canKingMove(const QPoint &from, const QPoint &to){
             result |= hasCheck(turn);
             if (turn) WhiteKing = from;
             else BlackKing = from;
-            board[5][to.y()] = board[6][to.y()];
-            board[6][to.y()] = Men::None;
+            board[6][to.y()] = board[5][to.y()];
+            board[5][to.y()] = Men::None;
             if (result) return false;
             board[7][to.y()] = rook;
             board[9][to.y()] = Men::None;
@@ -330,7 +330,7 @@ bool Board::canKingMove(const QPoint &from, const QPoint &to){
             result |= hasCheck(turn);
             if (turn) WhiteKing = from;
             else BlackKing = from;
-            board[6][to.y()] = board[5][to.y()];
+            board[2][to.y()] = board[5][to.y()];
             board[5][to.y()] = Men::None;
             if (result) return false;
             board[3][to.y()] = rook;
