@@ -21,19 +21,16 @@ public:
         int32_t cell_add2;
         int32_t status;
     };
-    void rotateBoard();
 private:
     bool turn;
-    QVector <Men> fullBoard; // to check checks he-he 12*12
-    QVector <Men> board;  // Основная доска
-    QVector<Move> moves;
-    int nMove;
+    Men **fullBoard; // to check checks he-he 12*12
+    Men **board; // just a part of fullBoard 8*8
+
 signals:
-    void moved(QVector <Men> board, int status, bool turn);
+    void moved(int *const *const board, int status, bool turn);
     void promotion(bool);
     void message(QString msg);
     void sendLastMove(const std::pair<QString, Move>& move);
-    void boardRotated(QVector <Men> board, int status, bool turn);
 public slots:
     void move(const QPoint& from, const QPoint &to);
     void promotion(int);
@@ -74,11 +71,10 @@ private:
     MoveStruct lastMove{Men::None, Men::None, {-1,-1}, {-1,-1}, {-1,-1}};
     QPoint checkingMen{-1,-1};
     Status status;
-    Status statusRepl;
     bool hasCheck(bool isWhite);
     int nChecks(bool isWhite);
     void checkStatus();
-
+    
     std::pair<QString, Move> movedMen;
 private:
     QString menToStr(Men);

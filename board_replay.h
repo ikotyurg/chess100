@@ -1,5 +1,5 @@
-#ifndef BOARD_REPLAY_H
-#define BOARD_REPLAY_H
+#ifndef BOARDPLAYGAME_H
+#define BOARDPLAYGAME_H
 
 #include <QObject>
 #include <QPoint>
@@ -22,17 +22,16 @@ public:
         int32_t status;
     };
 private:
-    QVector<Men> board;
     QVector<Move> moves;
     Status status;
     bool turn;
+    int **board;
     int nMove;
 public slots:
     void initBoard(QVector<Move> moves);
     void move(int nMove);
 signals:
-    void moved(QVector <Men> board, int status, bool turn);
+    void moved(int*const*const board, int status, bool turn);
 };
 
-
-#endif // BOARD_REPLAY_H
+#endif // BOARDPLAYGAME_H

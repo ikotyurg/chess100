@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2024-12-01T22:06:10
+# Project created by QtCreator 2020-05-09T22:06:10
 #
 #-------------------------------------------------
 
@@ -22,10 +22,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
+CONFIG += c++17
 
 SOURCES += \
-    board_replay.cpp \
         main.cpp \
     board.cpp \
     logic.cpp \
@@ -33,13 +32,15 @@ SOURCES += \
     savegamedialog.cpp \
     mainwindow.cpp \
     gamewindow.cpp \
+    board_replay.cpp \
+    board_replay_widget.cpp \
     board_widget.cpp \
     db_manager.cpp \
-    replay_list_games_window.cpp
+    replay_list_games_window.cpp \
+    replay_game_window.cpp
 
 HEADERS += \
     board.h \
-    board_replay.h \
     men.h \
     logic.h \
     status.h \
@@ -47,16 +48,20 @@ HEADERS += \
     savegamedialog.h \
     mainwindow.h \
     gamewindow.h \
+    board_replay.h \
+    board_replay_widget.h \
     board_widget.h \
     db_manager.h \
-    replay_list_games_window.h
+    replay_list_games_window.h \
+    replay_game_window.h
 
 FORMS += \
     promotiondialog.ui \
     savegamedialog.ui \
     mainwindow.ui \
     gamewindow.ui \
-    replay_list_games_window.ui
+    replay_list_games_window.ui \
+    replay_game_window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -18,7 +18,6 @@ class Logic : public QObject
 public:
     explicit Logic(QObject *parent = nullptr);
     void show(){mw.show();}
-
 signals:
 
 public slots:

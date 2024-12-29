@@ -1,24 +1,24 @@
 <RCC>
     <qresource prefix="/img">
-        <file>img/bishop-black.png</file>
-        <file>img/bishop-white.png</file>
-        <file>img/king-black.png</file>
-        <file>img/king-white.png</file>
-        <file>img/knight-black.png</file>
-        <file>img/knight-white.png</file>
-        <file>img/pawn-black.png</file>
-        <file>img/pawn-white.png</file>
-        <file>img/queen-black.png</file>
-        <file>img/queen-white.png</file>
-        <file>img/rook-black.png</file>
-        <file>img/rook-white.png</file>
+        <file>img/pieces /bishop-black.png</file>
+        <file>img/pieces /rook-white.png</file>
+        <file>img/pieces /rook-black.png</file>
+        <file>img/pieces /queen-white.png</file>
+        <file>img/pieces /queen-black.png</file>
+        <file>img/pieces /pawn-white.png</file>
+        <file>img/pieces /pawn-black.png</file>
+        <file>img/pieces /knight-white.png</file>
+        <file>img/pieces /knight-black.png</file>
+        <file>img/pieces /king-white.png</file>
+        <file>img/pieces /king-black.png</file>
+        <file>img/pieces /bishop-white.png</file>
     </qresource>
-    <qresource prefix="/icons"/>
-    <qresource prefix="/">
+    <qresource prefix="/icons">
         <file>img/icons/close_board.png</file>
         <file>img/icons/flip_board.png</file>
         <file>img/icons/game_new.png</file>
         <file>img/icons/Open_game.png</file>
         <file>img/icons/save.png</file>
+        <file>img/chess100.ico</file>
     </qresource>
 </RCC>

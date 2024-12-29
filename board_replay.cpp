@@ -2,8 +2,10 @@
 
 BoardReplay::BoardReplay(QObject *parent) : QObject(parent)
 {
-    board.resize(100); // Установим необходимый размер вектора
-    std::fill(board.begin(), board.end(), Men::None); // Заполняем вектор значением Men::None
+    board = new int*[8];
+    for (int i = 0; i < 8; ++i){
+        board[i] = new int[8];
+    }
 }
 
 void BoardReplay::initBoard(QVector<Move> moves)
@@ -12,26 +14,21 @@ void BoardReplay::initBoard(QVector<Move> moves)
     turn = true;
     status = Status::Play;
     nMove = -1;
-    for (int i = 0; i < 10; ++i){
-        board[i  + 20]  = Men::None;
-        board[i + 30] = Men::None;
-        board[i + 40] = Men::None;
-        board[i + 50] = Men::None;
-        board[i + 60] = Men::None;
-        board[i + 70] = Men::None;
-                       board[i + 80] = Men::WPawn;
-                       board[i + 10] = Men::BPawn;
-               }
-               board[1] = board[7] = board[2] = board[8] = Men::BKnight;
-               board[91] = board[92] = board[97] = board[98] = Men::WKnight;
-               board[3] = board[6] = Men::BBishop;
-               board[93] = board[96] = Men::WBishop;
-               board[0] = board[9] = Men::BRook;
-               board[90] = board[99] = Men::WRook;
-               board[4] = Men::BQueen;
-               board[94] = Men::WQueen;
-               board[5] = Men::BKing;
-               board[95] = Men::WKing;
+    for (int i = 0; i < 8; ++i){
+            board[i][2] = board[i][3] = board[i][4] = board[i][5] = Men::None;
+            board[i][6] = Men::WPawn;
+            board[i][1] = Men::BPawn;
+    }
+    board[1][0] = board[6][0] = Men::BKnight;
+    board[1][7] = board[6][7] = Men::WKnight;
+    board[2][0] = board[5][0] = Men::BBishop;
+    board[2][7] = board[5][7] = Men::WBishop;
+    board[0][0] = board[7][0] = Men::BRook;
+    board[0][7] = board[7][7] = Men::WRook;
+    board[3][0] = Men::BQueen;
+    board[3][7] = Men::WQueen;
+    board[4][0] = Men::BKing;
+    board[4][7] = Men::WKing;
     emit moved(board, int(status), turn);
 }
 
@@ -48,7 +45,7 @@ void BoardReplay::move(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = (ms[i] / 13) % 13 - 6;
-                board[x + 10 * y] = static_cast<Men>(men);
+                board[x][y] = men;
             }
         }
         while (nMove < this->nMove){
@@ -59,7 +56,7 @@ void BoardReplay::move(int nMove)
                 x = ms[i] % 13; ms[i] /= 13;
                 y = ms[i] % 13; ms[i] /= 13;
                 men = ms[i] % 13 - 6;
-                board[x + 10 * y] = static_cast<Men>(men);
+                board[x][y] = men;
             }
             --this->nMove;
         }
@@ -67,5 +64,4 @@ void BoardReplay::move(int nMove)
         turn = nMove % 2;
         emit moved(board, int(status), turn);
     }
-
 }

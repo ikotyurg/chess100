@@ -1,9 +1,9 @@
-#include "board_widget.h"
+#include "board_replay_widget.h"
 #include <QMouseEvent>
 #include <QCursor>
 
-BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - white
-{  
+BoardReplayWidget::BoardReplayWidget(QWidget *parent) : QWidget(parent) // turn == true - white
+{
     this->setFixedSize(windowSize, windowSize);
     // Инициализация шахматной доски
     cells = new QLabel*[nCells];
@@ -75,65 +75,12 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) // turn == true - wh
        QLabel *bottomRightCorner = new QLabel(this);
        bottomRightCorner->setGeometry((nCells + 1) * cellSize, (nCells + 1) * cellSize, cellSize, cellSize);
        bottomRightCorner->setStyleSheet("QLabel { background-color : " + cornerColor + "; }");
-    setBoard();
+
+       setBoard();
 }
 
-void BoardWidget::mousePressEvent(QMouseEvent *event){
-    QPoint to{event->x()/cellSize, event->y()/cellSize};
-    if (moveByClick){
-        if (movePoint != to){
-            emit sendMove(movePoint, to);
-        }
-    }
-    else{
-        if(to.x() < 10 && to.y() < 10 && matrix[to.x()][to.y()] != 0){
-            movePoint.setX(to.x());
-            movePoint.setY(to.y());
-            // Создаем QPixmap
-            QPixmap pixmap(getManPicPath(matrix[to.x()][to.y()]));
 
-            // Изменяем размер пиксмапа
-            QPixmap scaledPixmap = pixmap.scaled(cellSize, cellSize, Qt::KeepAspectRatio);
-
-            // Устанавливаем курсор с использованием объекта QCursor
-            this->setCursor(QCursor(scaledPixmap));
-        }
-
-    }
-}
-
-void BoardWidget::mouseDoubleClickEvent(QMouseEvent *event){
-    mousePressEvent(event);
-}
-
-void BoardWidget::mouseReleaseEvent(QMouseEvent *event){
-    if (moveByClick){
-        this->setCursor(QCursor());
-        moveByClick = false;
-        return;
-    }
-    QPoint to{event->x()/cellSize, event->y()/cellSize};
-    if (movePoint == to){
-        if(to.x() < 10 && to.y() < 10 && matrix[to.x()][to.y()] != 0){
-            moveByClick = true;
-            // Создаем QPixmap
-            QPixmap pixmap(getManPicPath(matrix[to.x()][to.y()]));
-
-            // Изменяем размер пиксмапа
-            QPixmap scaledPixmap = pixmap.scaled(cellSize, cellSize, Qt::KeepAspectRatio);
-
-            // Устанавливаем курсор с использованием объекта QCursor
-            this->setCursor(QCursor(scaledPixmap));
-
-        }
-    }
-    else{
-        emit sendMove(movePoint, to);
-        this->setCursor(QCursor());
-    }
-}
-
-void BoardWidget::setBoard(int *const *const men, int status, bool turn){
+void BoardReplayWidget::setBoard(int *const *const men, int status, bool turn){
     if (men){
         for (int x = 0; x < nCells; ++x)
             for (int y = 0; y < nCells; ++y)
@@ -157,24 +104,24 @@ void BoardWidget::setBoard(int *const *const men, int status, bool turn){
     emit sendTurn(turn);
 }
 
-QString BoardWidget::getManPicPath(int m)
+QString BoardReplayWidget::getManPicPath(int m)
 {
     switch (m) {
-        case 1: return QString(":/img/img/pieces /pawn-white.png");
-        case 2: return QString(":/img/img/pieces /knight-white.png");
-        case 3: return QString(":/img/img/pieces /bishop-white.png");
-        case 4: return QString(":/img/img/pieces /rook-white.png");
-        case 5: return QString(":/img/img/pieces /queen-white.png");
-        case 6: return QString(":/img/img/pieces /king-white.png");
+    case 1: return QString(":/img/img/pieces /pawn-white.png");
+    case 2: return QString(":/img/img/pieces /knight-white.png");
+    case 3: return QString(":/img/img/pieces /bishop-white.png");
+    case 4: return QString(":/img/img/pieces /rook-white.png");
+    case 5: return QString(":/img/img/pieces /queen-white.png");
+    case 6: return QString(":/img/img/pieces /king-white.png");
 
-        case -1: return QString(":/img/img/pieces /pawn-black.png");
-        case -2: return QString(":/img/img/pieces /knight-black.png");
-        case -3: return QString(":/img/img/pieces /bishop-black.png");
-        case -4: return QString(":/img/img/pieces /rook-black.png");
-        case -5: return QString(":/img/img/pieces /queen-black.png");
-        case -6: return QString(":/img/img/pieces /king-black.png");
+    case -1: return QString(":/img/img/pieces /pawn-black.png");
+    case -2: return QString(":/img/img/pieces /knight-black.png");
+    case -3: return QString(":/img/img/pieces /bishop-black.png");
+    case -4: return QString(":/img/img/pieces /rook-black.png");
+    case -5: return QString(":/img/img/pieces /queen-black.png");
+    case -6: return QString(":/img/img/pieces /king-black.png");
 
-        case 0:
+    case 0:
         default: return nullptr;
     }
 }
