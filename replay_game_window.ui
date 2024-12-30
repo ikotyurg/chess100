@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>838</width>
-    <height>516</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>50</y>
-     <width>631</width>
-     <height>401</height>
+     <x>-10</x>
+     <y>-10</y>
+     <width>900</width>
+     <height>700</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -35,10 +35,10 @@
    <widget class="QFrame" name="board_frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>400</width>
-      <height>400</height>
+      <x>20</x>
+      <y>50</y>
+      <width>605</width>
+      <height>605</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -51,8 +51,8 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>0</y>
+      <x>630</x>
+      <y>90</y>
       <width>191</width>
       <height>401</height>
      </rect>
@@ -177,7 +177,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Exit</string>
+        <string>Выход</string>
        </property>
       </widget>
      </item>
