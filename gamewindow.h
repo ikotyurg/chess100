@@ -23,11 +23,15 @@ signals:
     void promotion(int);
     void newGame();
     void saveGame(QString);
+    void selectedMove(int);
 private slots:
+    void getMoves(QStringList);
     void setStatus(int status);
     void setTurn(bool turn);
 
     void on_exit_clicked();
+
+    void on_listView_clicked(const QModelIndex &index);
 
 private:
     PromotionDialog promDialog;

@@ -145,7 +145,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>730</x>
@@ -164,13 +164,13 @@
         <attribute name="title">
          <string>Запись партии</string>
         </attribute>
-        <widget class="QListView" name="listView_2">
+        <widget class="QListView" name="listView">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>441</width>
-           <height>631</height>
+           <x>0</x>
+           <y>0</y>
+           <width>461</width>
+           <height>651</height>
           </rect>
          </property>
         </widget>
@@ -179,13 +179,13 @@
         <attribute name="title">
          <string>Партии</string>
         </attribute>
-        <widget class="QListView" name="listView">
+        <widget class="QListView" name="listViewGames">
          <property name="geometry">
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>451</width>
-           <height>641</height>
+           <width>461</width>
+           <height>651</height>
           </rect>
          </property>
         </widget>

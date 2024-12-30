@@ -1,6 +1,8 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 #include "status.h"
+#include <QStringListModel>
+#include <QDebug>
 
 GameWindow::GameWindow(QWidget *parent) :
     QDialog(parent),
@@ -28,6 +30,13 @@ GameWindow::~GameWindow()
     delete board;
 }
 
+void GameWindow::getMoves(QStringList moves)
+{
+    QStringListModel *model = new QStringListModel();
+    model->setStringList(moves);
+    ui->listView->setModel(model);
+}
+
 void GameWindow::setStatus(int status){
     switch (Status(status)) {
         case Status::Play:        ui->status->setText(QString("Play"));        break;
@@ -49,3 +58,10 @@ void GameWindow::on_exit_clicked()
 {
     this->close();
 }
+
+void GameWindow::on_listView_clicked(const QModelIndex &index)
+{
+    qDebug() << "INDEX: " << index.row();
+    emit selectedMove(index.row());
+}
+
