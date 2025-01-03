@@ -163,6 +163,16 @@ void BoardWidget::setBoard(int *const *const men, int status, bool turn){
     emit sendTurn(turn);
 }
 
+void BoardWidget::flipBoard(int *const *const men, int status, bool turn)
+{
+    for (int i = 0; i < 10; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    std::swap(men[i][j], men[i][9 - j]); // Меняем местами
+                }
+            }
+    setBoard(men, status, turn);
+}
+
 QString BoardWidget::getManPicPath(int m)
 {
     switch (m) {

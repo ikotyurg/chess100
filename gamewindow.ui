@@ -254,6 +254,22 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="flipBoard">
+      <property name="maximumSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/icons/img/icons/flip_board.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="exit">
       <property name="maximumSize">
        <size>

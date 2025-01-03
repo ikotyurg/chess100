@@ -30,7 +30,7 @@ signals:
     void sendMove(const QPoint &from, const QPoint &to);
 public slots:
     void setBoard(int *const *const men = nullptr, int status = 0, bool turn = true);
-
+    void flipBoard(int *const *const men = nullptr, int status = 0, bool turn = true);
 public:
     QLabel **cells;
     int matrix[10][10]{
