@@ -22,6 +22,7 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(ui->newgame, SIGNAL(clicked(bool)), this, SIGNAL(newGame()));
     connect(&saveGameDialog, SIGNAL(save(QString)),  this, SIGNAL(saveGame(QString)));
     connect(ui->savegame, SIGNAL(clicked(bool)), &saveGameDialog, SLOT(exec()));
+    connect(ui->flipBoard, SIGNAL(clicked(bool)), board, SLOT(flipBoard()));
 }
 
 GameWindow::~GameWindow()
