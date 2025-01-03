@@ -170,6 +170,8 @@ void BoardWidget::flipBoard(int *const *const men, int status, bool turn)
                     std::swap(men[i][j], men[i][9 - j]); // Меняем местами
                 }
             }
+    std::reverse(vLiterals.begin(), vLiterals.end());
+    std::reverse(hLiterals.begin(), hLiterals.end());
     setBoard(men, status, turn);
 }
 
